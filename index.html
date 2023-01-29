@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<title>Document</title>
+	</head>
+	<style>
+		body {
+		    margin: 0;
+		    background-color: #242423;
+		}
+		.container {
+			display: flex;
+		    align-items: center;
+		    height: 100vh;
+		}
+		.none {
+			opacity: 0;
+			transition: .7s;
+		}
+		.form {
+			margin: 0 auto;
+			flex-direction: column;
+			width: 350px;
+			justify-content: center;
+		}
+		.input {
+			height: 55px;
+			border-radius: 55px;
+			background-color: transparent;
+			border: 4px solid #fff;
+			outline: none;
+			margin: 5px;
+			font-size: 18px;
+			padding: 0 20px;
+			overflow: hidden;
+			color: #fff;
+			font-weight: 700;
+		    font-family: 'Poppins', sans-serif;
+		}
+		.input:focus {
+			transition: .3s;
+			border: 4px solid #dee2e6;
+		}
+		.btn {
+			width: 312px;
+			margin-top: 70px;
+			height: 63px;
+			border-radius: 50px;
+			background-color: white;
+			outline: none;
+			cursor: pointer;
+			font-weight: 700;
+		    font-family: 'Poppins', sans-serif;
+			font-size: 18px;
+			border: none;
+			color: #242423;
+		}
+		.btn:hover {
+			transition: .3s;
+			background-color: #dee2e6;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<form class="form" action="">
+				<input autocomplete="off" placeholder="Login" type="text" class="input">
+				<div style="display: flex; align-items: center; position: relative;">
+					<input autocomplete="off" placeholder="Password" id="pass" type="password" class="input input-pass">
+					<img style="cursor: pointer; z-index: 100; position: absolute; right: 50px;" id="a" src="eye.png" width="35" height="35">
+					<img id="b" class="none" src="light.png" style="position: absolute; z-index: -100; bottom: 0; transform: translateX(4.4px);">
+				</div>
+				<button class="btn">Log In</button>
+			</form>
+		</div>
+		<script type="text/javascript">
+			const btn = document.getElementById('a');
+			const light = document.getElementById('b');
+			const passPlain = document.getElementById('pass');
+			const pass = document.getElementById('pass').attributes;
+			let cnt = 1
+			btn.addEventListener('click', function(e) {
+				if(passPlain.value !== '') cnt++
+				if (cnt % 2 == 0) {
+					pass.getNamedItem('type').value = 'text'
+					light.style.opacity = 1
+					btn.attributes.getNamedItem('src').value = 'eyeClosed.png'
+				}
+				else {
+					pass.getNamedItem('type').value = 'password'
+					light.style.opacity = 0
+					btn.attributes.getNamedItem('src').value = 'eye.png'
+				}
+			});
+
+		</script>
+	</body>
+</html>
